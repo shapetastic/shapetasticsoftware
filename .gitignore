@@ -1,0 +1,14 @@
+# FTP / deployment credentials — never commit
+ftpdetails.txt
+*.ftp
+ftp*.txt
+
+# Local backup of the previous live site
+backup/
+
+# OS / editor cruft
+Thumbs.db
+.DS_Store
+*.swp
+.vscode/
+.idea/
