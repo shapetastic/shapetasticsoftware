@@ -1,0 +1,33 @@
+name: Deploy to FTP
+
+# Deploys the site to the live host whenever the site changes on main.
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'site/**'
+      - '.github/workflows/deploy.yml'
+  workflow_dispatch: {}   # allow manual runs from the Actions tab
+
+jobs:
+  ftp-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Deploy via FTPS
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+        with:
+          server: ${{ secrets.FTP_SERVER }}
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          protocol: ftps          # explicit FTPS on port 21
+          port: 21
+          local-dir: ./site/      # contents of site/ are published to the web root
+          server-dir: ./          # web root on the host
+          # Keep deploys clean but don't wipe host-managed files:
+          exclude: |
+            **/.git*
+            **/.git*/**
+            **/.well-known/**
