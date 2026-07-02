@@ -3,14 +3,14 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Shapetastic Software &mdash; Custom software development</title>
-<meta name="description" content="Shapetastic Software Ltd — a software consultancy delivering clean, well-tested, custom software. We understand your business, communicate clearly, and write only the code you need." />
+<title>Shapetastic Software &mdash; Custom software &amp; AI development</title>
+<meta name="description" content="Shapetastic Software Ltd — an AI-native software consultancy delivering clean, well-tested, custom software. We build with supervised AI agents, understand your business, communicate clearly, and write only the code you need." />
 <meta name="theme-color" content="#0e0e12" />
 
 <!-- Open Graph / social sharing -->
 <meta property="og:type" content="website" />
-<meta property="og:title" content="Shapetastic Software — Custom software development" />
-<meta property="og:description" content="Clean, well-tested, custom software. We understand your business, communicate clearly, and write only the code you need." />
+<meta property="og:title" content="Shapetastic Software — Custom software & AI development" />
+<meta property="og:description" content="An AI-native software consultancy. Clean, well-tested, custom software — built with supervised AI agents. We understand your business, communicate clearly, and write only the code you need." />
 <meta property="og:image" content="images/logo.jpeg" />
 <meta property="og:url" content="https://shapetastic.co.uk/" />
 
@@ -120,6 +120,7 @@
   .float-chip .sh { width: 14px; height: 14px; border-radius: 4px; }
   .float-chip.one { top: 18px; left: -8px; }
   .float-chip.two { bottom: 26px; right: -10px; }
+  .float-chip.three { top: 50%; right: -14px; transform: translateY(-50%); }
 
   /* ---------- Section shells ---------- */
   section { position: relative; }
@@ -151,6 +152,23 @@
   .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: center; }
   .about-grid h2 { font-size: clamp(1.8rem, 3.4vw, 2.4rem); margin: 0 0 20px; letter-spacing: -.4px; }
   .about-grid p { color: var(--muted); font-size: 1.08rem; margin: 0 0 16px; }
+  .pledges { list-style: none; margin: 22px 0 0; padding: 0; display: grid; gap: 12px; }
+  .pledges li { display: flex; align-items: flex-start; gap: 12px; color: var(--text); font-weight: 500; }
+  .pledges li .tick { flex: 0 0 auto; width: 22px; height: 22px; border-radius: 7px; display: grid; place-items: center; font-size: .78rem; background: rgba(33,150,214,.16); color: var(--blue); margin-top: 3px; }
+
+  /* ---------- How we build (steps) ---------- */
+  .steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 22px; counter-reset: step; }
+  .step {
+    position: relative; background: var(--bg-card); border: 1px solid var(--line);
+    border-radius: var(--radius); padding: 28px 24px;
+  }
+  .step .num {
+    width: 38px; height: 38px; border-radius: 11px; display: grid; place-items: center;
+    font-family: "Fredoka", sans-serif; font-weight: 600; font-size: 1.05rem; margin-bottom: 16px;
+    background: rgba(255,198,41,.16); color: var(--yellow);
+  }
+  .step h3 { margin: 0 0 8px; font-size: 1.1rem; font-weight: 600; }
+  .step p { margin: 0; color: var(--muted); font-size: .96rem; }
   .shapes-row { display: flex; gap: 18px; justify-content: center; }
   .shapes-row .shape { width: 92px; height: 92px; display: grid; place-items: center; }
   .sq { background: var(--blue); border-radius: 22px; transform: rotate(-8deg); }
@@ -188,6 +206,7 @@
     .hero-grid, .about-grid { grid-template-columns: 1fr; gap: 40px; }
     .hero-art { order: -1; }
     .grid-cards { grid-template-columns: repeat(2, 1fr); }
+    .steps { grid-template-columns: repeat(2, 1fr); }
     .contact-card { grid-template-columns: 1fr; padding: 36px; }
     nav.links { display: none; }
     .nav-toggle { display: inline-flex; }
@@ -198,6 +217,7 @@
   }
   @media (max-width: 560px) {
     .grid-cards { grid-template-columns: 1fr; }
+    .steps { grid-template-columns: 1fr; }
     .hero { padding: 64px 0 56px; }
     .section-pad { padding: 64px 0; }
     .float-chip.one { left: 4px; } .float-chip.two { right: 4px; }
@@ -215,6 +235,7 @@
     </a>
     <nav class="links" id="navlinks">
       <a href="#services">What we do</a>
+      <a href="#ai">AI</a>
       <a href="#approach">Approach</a>
       <a href="#contact">Contact</a>
       <a class="btn" href="#contact">Start a project</a>
@@ -231,9 +252,9 @@
 <section class="hero">
   <div class="wrap hero-grid">
     <div class="hero-copy">
-      <span class="eyebrow"><span class="dot"></span> Custom software development</span>
+      <span class="eyebrow"><span class="dot"></span> Custom software &middot; AI-native</span>
       <h1>Software that <span class="accent">fits your business</span>, not the other way around.</h1>
-      <p class="lead">Shapetastic Software is a software consultancy that builds clean, well-tested, custom software — and writes only the code you actually need.</p>
+      <p class="lead">Shapetastic Software is a software consultancy that builds clean, well-tested, custom software — increasingly powered by AI agents and automation — and writes only the code you actually need.</p>
       <div class="hero-cta">
         <a class="btn" href="#contact">Get in touch</a>
         <a class="btn ghost" href="#services">What we do</a>
@@ -245,6 +266,7 @@
       </div>
       <div class="float-chip one"><span class="sh" style="background:var(--yellow)"></span> Well tested</div>
       <div class="float-chip two"><span class="sh" style="background:var(--blue)"></span> Cleanly built</div>
+      <div class="float-chip three"><span class="sh" style="background:var(--red)"></span> AI-native</div>
     </div>
   </div>
 </section>
@@ -292,6 +314,82 @@
   </div>
 </section>
 
+<!-- ============ AI CAPABILITIES ============ -->
+<section id="ai" class="about section-pad">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="tag">AI capabilities</span>
+      <h2>AI that earns its place in your product</h2>
+      <p>Practical, well-governed AI — built to be checked, kept honest, and owned by you. No hype, no black boxes.</p>
+    </div>
+    <div class="grid-cards">
+      <div class="card-item">
+        <div class="ico b1">&#9679;</div>
+        <h3>AI agents &amp; automation</h3>
+        <p>Supervised agents that do real work end-to-end — with a human firmly in control of what ships.</p>
+      </div>
+      <div class="card-item">
+        <div class="ico b2">&#9650;</div>
+        <h3>Document &amp; media extraction</h3>
+        <p>Turn PDFs, video, audio and images into clean, structured, cited data your systems can actually use.</p>
+      </div>
+      <div class="card-item">
+        <div class="ico b3">&#9632;</div>
+        <h3>Knowledge assistants</h3>
+        <p>Answers grounded in your own content, with sources — retrieval-based AI that doesn't guess.</p>
+      </div>
+      <div class="card-item">
+        <div class="ico b1">&#9679;</div>
+        <h3>Structured, validated output</h3>
+        <p>AI that returns typed, schema-checked data — verified before anything downstream trusts it.</p>
+      </div>
+      <div class="card-item">
+        <div class="ico b2">&#9650;</div>
+        <h3>Your models, your choice</h3>
+        <p>Local or cloud models behind one clean seam. No vendor lock-in — swap providers as needs change.</p>
+      </div>
+      <div class="card-item">
+        <div class="ico b3">&#9632;</div>
+        <h3>Built to be checked</h3>
+        <p>Every answer traceable to its evidence. When it doesn't know, it says so — no confident fiction.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ HOW WE BUILD ============ -->
+<section id="how" class="section-pad">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="tag" style="color:var(--yellow);">How we build</span>
+      <h2>A supervised fleet of AI agents</h2>
+      <p>We build faster with AI agents — but nothing reaches production without independent review and passing tests.</p>
+    </div>
+    <div class="steps">
+      <div class="step">
+        <div class="num">1</div>
+        <h3>Spec</h3>
+        <p>Work is sliced into small, well-defined pieces with a clear goal.</p>
+      </div>
+      <div class="step">
+        <div class="num">2</div>
+        <h3>AI-assisted build</h3>
+        <p>Agents implement each change, guided by tight guardrails and standards.</p>
+      </div>
+      <div class="step">
+        <div class="num">3</div>
+        <h3>Independent review</h3>
+        <p>A separate reviewer — AI and human — checks every change before it lands.</p>
+      </div>
+      <div class="step">
+        <div class="num">4</div>
+        <h3>CI gate</h3>
+        <p>Automated build and tests must pass before anything merges. No exceptions.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- ============ APPROACH ============ -->
 <section id="approach" class="about section-pad">
   <div class="wrap about-grid">
@@ -300,6 +398,12 @@
       <h2>Developers who make the effort to understand your business</h2>
       <p>We take the time to understand what your business actually needs, communicate clearly throughout, and keep things as simple as they should be.</p>
       <p>No over-complicating the problem. No gold-plating. Just the right code, done well, delivered on time — software that's a pleasure to own and easy to build on.</p>
+      <p>And when we bring AI into the mix, the same principles hold:</p>
+      <ul class="pledges">
+        <li><span class="tick">&#10003;</span> AI assists, humans decide.</li>
+        <li><span class="tick">&#10003;</span> Every answer traceable to its source.</li>
+        <li><span class="tick">&#10003;</span> No hallucinated confidence, no vendor lock-in.</li>
+      </ul>
     </div>
     <div class="shapes-row" aria-hidden="true">
       <div class="shape"><div class="tri"></div></div>
