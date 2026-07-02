@@ -1,11 +1,13 @@
 name: Deploy to FTP
 
-# Deploys the site to the live host whenever the site changes on main.
+# Publishes the site to the canonical host (shapetasticsoftware.co.uk) and a
+# 301-redirect to the legacy host (shapetastic.co.uk), whenever either changes on main.
 on:
   push:
     branches: [main]
     paths:
       - 'site/**'
+      - 'redirect/**'
       - '.github/workflows/deploy.yml'
   workflow_dispatch: {}   # allow manual runs from the Actions tab
 
@@ -16,11 +18,12 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Deploy to shapetastic.co.uk (FTPS)
+      # Canonical site — the real website lives here (registered Ltd domain).
+      - name: Deploy site to shapetasticsoftware.co.uk (FTPS)
         uses: SamKirkland/FTP-Deploy-Action@v4.3.5
         with:
           server: ${{ secrets.FTP_SERVER }}
-          username: ${{ secrets.FTP_USERNAME }}
+          username: ${{ secrets.FTP_USERNAME_NEW }}
           password: ${{ secrets.FTP_PASSWORD }}
           protocol: ftps          # explicit FTPS on port 21
           port: 21
@@ -32,16 +35,18 @@ jobs:
             **/.git*/**
             **/.well-known/**
 
-      - name: Deploy to shapetasticsoftware.co.uk (FTPS)
+      # Legacy domain — publish only a 301 redirect to the canonical domain.
+      # local-dir is ./redirect/ (just .htaccess), so the old site files here are removed.
+      - name: Deploy redirect to shapetastic.co.uk (FTPS)
         uses: SamKirkland/FTP-Deploy-Action@v4.3.5
         with:
           server: ${{ secrets.FTP_SERVER }}
-          username: ${{ secrets.FTP_USERNAME_NEW }}
+          username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
           protocol: ftps          # explicit FTPS on port 21
           port: 21
-          local-dir: ./site/
-          server-dir: ./
+          local-dir: ./redirect/  # only the .htaccess redirect is published
+          server-dir: ./          # web root on the host
           exclude: |
             **/.git*
             **/.git*/**

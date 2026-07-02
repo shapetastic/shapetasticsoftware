@@ -1,0 +1,4 @@
+# shapetastic.co.uk -> shapetasticsoftware.co.uk (the registered Ltd domain).
+# Permanent (301) redirect, preserving the requested path and query string.
+RewriteEngine On
+RewriteRule ^(.*)$ https://shapetasticsoftware.co.uk/$1 [R=301,L]
