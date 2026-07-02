@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://shapetastic.co.uk/sitemap.xml
