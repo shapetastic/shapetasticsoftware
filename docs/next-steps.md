@@ -27,4 +27,4 @@ live and healthy. Ticked items are already done for context.
 ## Notes
 - Site is a single self-contained `site/index.html` (vanilla HTML/CSS/JS, no build step); keep additions dependency-free.
 - Deploy triggers only on changes to `site/**`, `redirect/**`, or the workflow file — editing docs like this one does **not** redeploy.
-- Email `dean@shapetastic.co.uk` is intentionally kept on the original domain; only web URLs moved to the canonical domain.
+- Email `hello@shapetastic.co.uk` is intentionally kept on the original domain; only web URLs moved to the canonical domain.
